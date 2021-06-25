@@ -1,1 +1,5 @@
-SCHEMA UPDATE heeeeeeeehawwwww SH-3 Change
+-- DROP DATABASE
+DROP DATABASE IF EXISTS games_db;
+
+-- CREATE DATABASE
+CREATE DATABASE games_db;
