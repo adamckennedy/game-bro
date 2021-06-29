@@ -5,22 +5,6 @@ const { User, Post, Comment, Vote } = require('../../models');
 
 // get all 
 router.get('/', (req, res) => {
-//     Post.findAll({
-//       attributes: ['id', 'post_url', 'title', 'created_at'],
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['id', 'username', 'email', 'password']
-//         }
-//       ]
-//     })
-//       .then(dbPostData => res.json(dbPostData))
-//       .catch(err => {
-//         console.log(err);
-//         res.status(500).json(err);
-//       });
-//   });
-
    Post.findAll({
     order: [['created_at', 'DESC']],
     attributes: [
@@ -28,7 +12,6 @@ router.get('/', (req, res) => {
       'post_url',
       'title',
       'created_at',
-
     ],
     include: [
       // include the Comment model here:
@@ -96,6 +79,16 @@ router.get('/', (req, res) => {
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
+      });
+  });
+
+  // PUT /api/posts/upvote
+  router.put('/upvote', (req, res) => {
+    Post.upvote(req.body, { Vote })
+      .then(updatedPostData => res.json(updatedPostData))
+      .catch(err => {
+        console.log(err);
+        res.status(400).json(err);
       });
   });
 
