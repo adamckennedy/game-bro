@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Muffin - browse, add, rate, and search check for deals on your favorite games!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Orelega+One&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+
+    <div class="wrapper">
+    <header>
+        <h1 class="has-text-black px-3 py-3 has-text-weight-bold">Tecchit</h1>
+        <nav class="navbar mt-2">
+            {{#if loggedIn}}
+            <a href="/" class="navbar-item is-hoverable pt-1">home</a>
+            <a href="/dashboard" class="navbar-item is-hoverable pt-1">dashboard</a>
+            <a href="/dashboard/create/" class="navbar-item is-hoverable pt-1 mr-4">create post</a>
+            <button id="logout" class="button is-danger">logout</button>
+            {{else}}
+            <a href="/" class="navbar-item is-hoverable pt-1">home</a>
+            <a href="/login" class="button is-primary">login</a>
+            {{/if}}
+        </nav>
+    </header>
+
+    <main id="container" class="center-align">
+
+        <!-- Game content goes here -->
+        <div id="gameDiv" class="gameDiv center-align card-panel hoverable">
+
+            <!--Default image-->
+            <div id="displayGame">
+                <img id="defaultImg" src="/stylesheets/default-img.png" alt="">
+                <img id="errorImg" class="hidden" src="stylesheets/error-img.jpg" alt="">
+            </div>
+
+            <div id="infoDiv">
+                <h1>Game<span class="appName"> Muffin</span></h1>
+                <p class="description">
+                    Browse, add, rate, and check the latest deals on our favorite games!
+                </p>
+
+            </div>
+
+
+            <!-- Click this button to display random painting -->
+            <button id="randomArtBtn" class="btn">Surprise Me!</button>
+
+
+            <!-- Search here for a specific painting -->
+            <form id="artSearchBar">
+                <input type="search" id="artSearchTerm" class="searchBar center-align"
+                    placeholder="Search By Artist or Culture">
+                <button id="artSearchBtn" type="submit">Search for a Game</button>
+            </form>
+        </div>
+
+        <!--Append Game Deal Here-->
+        {{#if loggedIn}}
+        <div id="musicDiv" class="hidden center-align">
+            <p id="addMusicMsg" class="description"></p>
+
+            <!--Display game the user searches for/selects.-->
+            <div id="displaySongDiv">
+                <!--Append deal to page here-->
+
+            </div>
+
+        </div>
+        {{/if}}
+
+    </main>
+
+     {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    {{/if}}
+
+</body>
+
+</html>
