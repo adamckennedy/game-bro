@@ -1,7 +1,7 @@
-   <div class="mb-5 pt-3">
-        <a href="/dashboard/create/"><button id="create-post" class="button is-primary is-pulled-right">search for a game</button></a>
+  <div class="mb-5 pt-3">
+        <a href="/dashboard/create/"><button id="create-post" class="button is-primary is-pulled-right">create post</button></a>
         
-        <h2 class="title pb-4">dashboard: your games</h2><hr>
+        <h2 class="title pb-4">dashboard: your posts</h2><hr>
 {{#if posts.length}}
     </div>
 
@@ -13,6 +13,7 @@
     {{/each}}
 
 {{else}}
-<h6 class="pb-4 has-text-centered is-italic">you do not have any games</h6>
+<h6 class="pb-4 has-text-centered is-italic">you do not currently have any games</h6>
 
 {{/if}}
+

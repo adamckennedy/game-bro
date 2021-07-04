@@ -1,219 +1,164 @@
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-}
-
-
-body {
-    font-family: 'Open Sans', sans-serif;
-    color: var(--dark-color);
-    padding-top: 3em;
-}
-
-header {
-    text-align: center;
-}
-
-img {
-    max-height: 70%;
-    max-width: 70%;
-    transition: transform .5s;
-}
-
-h1 {
+  }
+  
+  body, html {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+    color: #333;
+  }
+  
+  a {
+    text-decoration: none;
     font-weight: bold;
-    font-size: 20px;
-}
-
-.description {
-    font-size: 12px;
-    line-height: 1.5;
-    font-style: italic;
-    padding-bottom: 10px;
-}
-
-#artSearchBar, #musicSearchBar {
-    width: 70%;
+    color: black;
+  }
+  
+  a:hover {
+    color: #3486eb;
+  }
+  
+  button {
+    border: 0;
+    padding: 1%;
+    font-weight: bold;
+    transition: background-color .1s;
+    cursor: pointer;
     border-radius: 5px;
-    text-align: center;
-    font-style: italic;
-    color: var(--dark-color);
-    margin: 10px 10px 0 10px;
-}
-
-.btn {
-    background-color: var(--dark-grey);
-    color: var(--beige);
-    width: 80%;
-    height: 50%;
-    line-height: 1.5;
-    margin: 10px;
-    padding: 5px;
-    border-radius: 5px;
-}
-
-#artSearchBtn, #musicSearchBtn {
+  }
+  
+  .post-list {
     margin: 0;
     padding: 0;
-}
-
-#artDiv, #musicDiv {
+  }
+  
+  textarea, input {
+    padding: .5%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  textarea:focus, input:focus {
+    outline: none;
+    border: 1px solid #3486eb;
+  }
+  
+  textarea {
+    min-width: 40%;
+    min-height: 100px;
+  }
+  
+  form > div {
+    margin-bottom: 2%;
+  }
+  
+  form label {
+    display: block;
+  }
+  
+  .wrapper {
+    width: 100%;
+    min-height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
-    justify-content: center;
+  }
+  
+  header {
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-}
-
-#infoDiv {
-    text-align: center;
-    width: 80%;
-}
-
-#musicDiv p {
-    padding-bottom: 10px;
-}
-
-#artSearchBtn, #musicSearchBtn {
-    opacity: 0;
-    height: 1px;
-    width: 1px;
-}
-
-.appName {
+    padding: 0 1%;
+  }
+  
+  main {
+    flex: 1;
+    padding: 2% 4%;
+  }
+  
+  .btn-no-style {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    text-decoration: none;
+    color: #225ca3;
+    font-size: 100%;
     font-weight: bold;
-    font-size: 20px;
+    transition: color .1s;
+    margin-left: 16px;
+  }
+  
+  .btn-no-style:hover {
+    background: none;
+    color: #3486eb;
+  }
+  
+  .delete-post-btn {
+    background-color: #d41414;
+  }
+  
+  .delete-post-btn:hover {
+    background-color: #ff643d;
+  }
+  
+  .post {
+    margin-bottom: 2%;
+    line-height: 150%;
+  }
+  
+  .post .title span {
     font-style: italic;
-}
+    font-size: 90%;
+    color: #7d7d7d;
+  }
+  
+  .edit-link {
+    display: block;
+    margin: -1.5% 0 2% 0;
+  }
+  
+  .comment-form {
+    margin-bottom: 5%;
+  }
+  
+  .comment {
+    padding: 1%;
+    margin-bottom: 1%;
+  }
+  
+  .comment:nth-child(odd) {
+    background-color: #fff5eb;
+  }
+  
+  .comment .meta {
+    font-size: 90%;
+    margin-bottom: .5%;
+    opacity: .6;
+  }
+  
+  .edit-post-form {
+    margin-bottom: 5%;
+  }
+  
+  footer {
+    border-top: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+    font-size: 110%;
+  }
 
-.btn:hover {
-    font-size: 10px;
-    transition: all .3s ease-in-out;
-    cursor: pointer;
-}
+  .card {
+      margin-bottom: 1em;
+      margin-top: 1em;
+  }
 
-img:hover, img:active {
-    transform: scale(1.5, 1.5);
-    cursor: pointer;
-    /* only blow up when on-click for larger than mobile phone size. */
-}
-
-.hidden {
-    display: none;
-}
-
-/* media query for tablet size */
-
-@media screen and (min-width: 768px) {
-
-    img {
-        max-height: 50%;
-        max-width: 50%;
-        padding-top: 20px;
-        padding-bottom: 10px;
-    }
-
-    h1, .appName {
-        font-size: 24px;
-    }
-
-    .description {
-        font-size: 16px;
-        padding-bottom: 20px;
-    }
-
-}
-
-
-/* Media query for laptop size */
-
-@media screen and (min-width: 1200px) {
-
-    body {
-        padding-top: 3.5em;
-        background-image: url("../assets/images/bgImg.png");            
-        background-size: cover;
-        background-attachment: fixed;
-        height: 800px;
-    }
-
-    #container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
-    
-    .card-panel {
-        background-color: rgb(255,255,255,0.95);
-    }
-
-    .btn {
-        width: 50%;
-    }
-
-    img {
-        max-height: 50%;
-        max-width: 50%;
-        padding-top: 20px;
-        padding-bottom: 10px;
-    }
-
-    img:hover, img:active {
-        transform: scale(1.9, 1.9);
-    }
-
-    #defaultImg, #errorImg {
-        max-height: 30%;
-        max-width: 30%;
-        padding-top: 10px;
-        padding-bottom: 0;
-    }
-
-    #defaultImg:hover,  #defaultImg:active, #errorImg:hover, #errorImg:active {
-        transform: scale(1.5, 1.5);
-    }
-
-    h1, .appName {
-        font-size: 24px;
-    }
-
-    .description {
-        font-size: 16px;
-        font-weight: bold;
-        padding-bottom: 20px;
-    }
-
-    #musicDiv, #musicSearchBar {
-        display: flex;
-    }
-
-    #musicDiv {
-        transition: box-shadow .25s;
-        padding: 24px;
-        margin: .5rem 0 1rem 0;
-        border-radius: 2px;
-        background-color: rgb(255,255,255,0.95);
-        box-shadow: 0 8px 17px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
-        width: 80%;
-    }
-
-    #artDiv {
-        width: 80%;
-    }
-
-    #artSearchBar, #musicSearchBar {
-        margin: 3px;
-        width: 50%;
-    }
-}
-
-:root {
-    --light-color: white;
-    --beige: rgb(234, 239, 211);;
-    --light-blue: rgb(195, 217, 250);
-    --dark-blue: rgb(33, 0, 196);
-    --dark-grey: rgb(60, 55, 86);
-    --dark-color: black;
-}
+  .rows{
+      display:flex;
+      flex-direction: column;
+  }

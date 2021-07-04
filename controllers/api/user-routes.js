@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
         include: [
             {
             model: Comment,
-            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            attributes: ['id', 'user_id', 'post_id', 'comment_text'],
             },
             {
             model: Post,
@@ -35,7 +35,7 @@ router.get('/:id', (req, res) => {
             attributes: ['id', 'title', 'post_url', 'user_id'],
         },
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'], 
+        attributes: ['id', 'user_id', 'post_id', 'comment_text'], 
     })
     .then(dbUserData => {
         if (!dbUserData) {
