@@ -57,6 +57,9 @@ router.get('/', (req, res) => {
     res.render('signup');
   });
 
+  router.get('/dashboard', (req, res) => {
+    res.render('dashboard');
+  });
 
   router.get('/post/:id', (req, res) => {
     Post.findOne({
