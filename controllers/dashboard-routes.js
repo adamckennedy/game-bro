@@ -1,31 +1,26 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
-const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, (req, res) => {
+
+router.get('/', (req, res) => {
     Post.findAll({
       where: {
         user_id: req.session.user_id
       },
-      attributes: [
-        'id',
-        'title',
-        'created_at',
-        'post_content'
-      ],
+      attributes: ['id', 'title', 'post_url', 'user_id'],
       include: [
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          attributes: ['id', 'user_id', 'post_id', 'comment_text'],
           include: {
             model: User,
-            attributes: ['username', 'twitter']
+            attributes: ['username']
           }
         },
         {
           model: User,
-          attributes: ['username', 'twitter']
+          attributes: ['username']
         }
       ]
     })
@@ -44,24 +39,19 @@ router.get('/', withAuth, (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: [
-        'id',
-        'title',
-        'created_at',
-        'post_content'
-      ],
+      attributes: ['id', 'title', 'post_url', 'user_id'],
       include: [
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          attributes: ['id', 'user_id', 'post_id', 'comment_text'],
           include: {
             model: User,
-            attributes: ['username', 'twitter']
+            attributes: ['username']
           }
         },
         {
           model: User,
-          attributes: ['username', 'twitter']
+          attributes: ['username']
         }
       ]
     })
@@ -89,24 +79,19 @@ router.get('/create/', withAuth, (req, res) => {
       where: {
         user_id: req.session.user_id
       },
-      attributes: [
-        'id',
-        'title',
-        'created_at',
-        'post_content'
-      ],
+      attributes: ['id', 'title', 'post_url', 'user_id'],
       include: [
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          attributes: ['id', 'user_id', 'post_id', 'comment_text'],
           include: {
             model: User,
-            attributes: ['username', 'twitter']
+            attributes: ['username']
           }
         },
         {
           model: User,
-          attributes: ['username', 'twitter']
+          attributes: ['username']
         }
       ]
     })
