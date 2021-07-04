@@ -16,7 +16,7 @@
 
     <div class="wrapper">
     <header>
-        <h1 class="has-text-black px-3 py-3 has-text-weight-bold">Tecchit</h1>
+        <h1 class="has-text-black px-3 py-3 has-text-weight-bold">gameMuffin</h1>
         <nav class="navbar mt-2">
             {{#if loggedIn}}
             <a href="/" class="navbar-item is-hoverable pt-1">home</a>
@@ -25,9 +25,10 @@
             <button id="logout" class="button is-danger">logout</button>
             {{else}}
             <a href="/" class="navbar-item is-hoverable pt-1">home</a>
-            <a href="/login" class="button is-primary">login</a>
+            <a href="/login" class="button is-primary" id="login-btn">login</a>
             {{/if}}
         </nav>
+        
     </header>
 
     <main id="container" class="center-align">
@@ -49,18 +50,18 @@
 
             </div>
 
+  
+            <!-- Click this button to display random painting 
+            <button id="randomArtBtn" class="btn">Surprise Me!</button>-->
 
-            <!-- Click this button to display random painting -->
-            <button id="randomArtBtn" class="btn">Surprise Me!</button>
 
-
-            <!-- Search here for a specific painting -->
+            <!-- Search here for a specific painting
             <form id="artSearchBar">
                 <input type="search" id="artSearchTerm" class="searchBar center-align"
                     placeholder="Search By Artist or Culture">
                 <button id="artSearchBtn" type="submit">Search for a Game</button>
             </form>
-        </div>
+        </div> -->
 
         <!--Append Game Deal Here-->
         {{#if loggedIn}}
@@ -75,12 +76,26 @@
 
         </div>
         {{/if}}
-
+    
     </main>
+    {{{ body }}}
 
      {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
+  <footer class="footer rows pb-2">
+        <div class="row-is-full content has-text-centered">
+            <p>
+            <a href="/">homepage</a>{{#if loggedIn}} | 
+            <a href="/dashboard/">dashboard</a> | 
+            <a href="/dashboard/create/">create new post</a>
+            {{else}}
+             | <a href="/login/">login</a>
+            {{/if}}
+            </p>
+        </div>
+        </footer>
+    
 
 </body>
 
