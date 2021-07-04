@@ -53,6 +53,10 @@ router.get('/', (req, res) => {
   //   res.render('login');
   // });
 
+  router.get('/signup', (req, res) => {
+    res.render('signup');
+  });
+
 
   router.get('/post/:id', (req, res) => {
     Post.findOne({
@@ -63,10 +67,10 @@ router.get('/', (req, res) => {
       include: [
         {
           model: Comment,
-          attributes: ['id', 'user_id', 'post_id', 'comment_text'],
+          attributes: ['id', 'user_id', 'post_id', 'comment_text'],             
           include: {
             model: User,
-            attributes: ['id', 'username', 'email', 'password']
+            attributes: ['username', 'twitch']
           }
         },
         {
@@ -75,7 +79,7 @@ router.get('/', (req, res) => {
         },
         {
         model: User,
-        attributes: ['username']
+        attributes: ['username', 'twitch']
         }
       ]
     })
