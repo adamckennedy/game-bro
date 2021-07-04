@@ -26,6 +26,11 @@ User.init(
                  isEmail: true
              }
          },
+         twitch: {
+             type: DataTypes.STRING,
+             allowNull: true,
+             unique: true,    
+         },
          password: {
              type: DataTypes.STRING,
              allowNull: false,

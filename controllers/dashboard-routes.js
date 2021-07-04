@@ -46,12 +46,12 @@ router.get('/', (req, res) => {
           attributes: ['id', 'user_id', 'post_id', 'comment_text'],
           include: {
             model: User,
-            attributes: ['username']
+            attributes: ['username', 'twitch']
           }
         },
         {
           model: User,
-          attributes: ['username']
+          attributes: ['username', 'twitch']
         }
       ]
     })
@@ -86,12 +86,12 @@ router.get('/create/', withAuth, (req, res) => {
           attributes: ['id', 'user_id', 'post_id', 'comment_text'],
           include: {
             model: User,
-            attributes: ['username']
+            attributes: ['username', 'twitch']
           }
         },
         {
           model: User,
-          attributes: ['username']
+          attributes: ['username', 'twitch']
         }
       ]
     })
