@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Comment, User } = require('../../models');
+const { Comment, User, Post } = require('../../models');
 
 router.get('/', (req, res) => {
     Comment.findAll({
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ['id', 'user_id', 'post_id', 'comment_text'],
         include: [
             {
                 model: User,
