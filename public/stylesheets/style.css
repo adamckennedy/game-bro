@@ -18,6 +18,16 @@ body, html {
     padding-top: 3em;
 }
 
+.wrapper {
+    width: 100%;
+    min-height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+
 header {
     text-align: center;
 }

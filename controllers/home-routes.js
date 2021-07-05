@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     Post.findAll({
       attributes: [
         'id',
-        'post_url',
+        
         'title',
         'user_id',
       //  [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
@@ -57,20 +57,23 @@ router.get('/', (req, res) => {
     res.render('signup');
   });
 
+  router.get('/dashboard', (req, res) => {
+    res.render('dashboard');
+  });
 
   router.get('/post/:id', (req, res) => {
     Post.findOne({
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'post_url', 'title', 'user_id'],
+      attributes: ['id', 'title',  'user_id'],
       include: [
         {
           model: Comment,
           attributes: ['id', 'user_id', 'post_id', 'comment_text'],             
           include: {
             model: User,
-            attributes: ['username', 'twitch']
+            attributes: ['username']
           }
         },
         {
@@ -79,7 +82,7 @@ router.get('/', (req, res) => {
         },
         {
         model: User,
-        attributes: ['username', 'twitch']
+        attributes: ['username']
         }
       ]
     })

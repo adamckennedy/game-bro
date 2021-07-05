@@ -1,17 +1,15 @@
-   <div class="mb-5 pt-3">
-        <a href="/dashboard/create/"><button id="create-post" class="button is-primary is-pulled-right">search for a game</button></a>
-        
+<div class="mb-5 pt-3">
+    <p><a class="link" href="/dashboard/create/">New Review</a></p>  
         <h2 class="title pb-4">dashboard: your games</h2><hr>
 {{#if posts.length}}
     </div>
-
     {{#each posts as |post|}}
         {{> post-info post}}
-        
-            <a href="/dashboard/edit/{{post.id}}"><button class="button mb-5 ml-5 is-warning">edit post</button></a>
+            <a href="/dashboard/edit/{{post.id}}">
+          <!--  <button class="button mb-5 ml-5 is-warning">edit post</button></a>-->
+            <p><a class="link" href="/post">Edit your review</a></p>  
         </div>
     {{/each}}
-
 {{else}}
 <h6 class="pb-4 has-text-centered is-italic">you do not have any games</h6>
 
