@@ -23,16 +23,20 @@
             <a href="/login" class="button">login</a>
             {{/if}}
         </nav>
+        
     </header>
 
     <main>
             {{{ body }}}
     </main>
 
-    <footer class="footer rows pb-2">
+     {{#if loggedIn}}
+    <script src="/javascript/logout.js"></script>
+    {{/if}}
+  <footer class="footer rows pb-2">
         <div class="row-is-full content has-text-centered">
             <p>
-            <a href="/">home</a>{{#if loggedIn}} | 
+            <a href="/">homepage</a>{{#if loggedIn}} | 
             <a href="/dashboard/">dashboard</a> | 
             <a href="/dashboard/create/">create new post</a>
             {{else}}
@@ -40,14 +44,9 @@
             {{/if}}
             </p>
         </div>
-      <div class="row-is-full content has-text-centered">
-  </div>
-    </footer>
-  </div>
+        </footer>
+    
 
-{{#if loggedIn}}
-<script src="/javascript/logout.js"></script>
-{{/if}}
 </body>
 
 </html>

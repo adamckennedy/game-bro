@@ -20,12 +20,12 @@ router.get('/', (req, res) => {
         attributes: ['id', 'comment_text', 'post_id', 'user_id'],
         include: {
           model: User,
-          attributes: ['id', 'username', 'email', 'password']
+          attributes: ['username', 'twitch']
         }
       },
       {
         model: User,
-        attributes: ['id', 'username', 'email', 'password']
+        attributes: ['username', 'twitch']
       }
     ]
    })
@@ -51,7 +51,7 @@ router.get('/', (req, res) => {
         },
         {
           model: User,
-          attributes: ['username'],
+          attributes: ['username', 'twitch'],
         },
         {
         model: Vote,
