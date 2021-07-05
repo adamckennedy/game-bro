@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 class Comment extends Model {}
 
-Comment.init(
+Comment.init( 
     {
       id: {
         type: DataTypes.INTEGER,
@@ -32,8 +32,8 @@ Comment.init(
         // 1 char at least
         validate: {
           len: [1]
-        }
-      }
+        },
+      },
       }
     },
     {
@@ -41,6 +41,8 @@ Comment.init(
       timestamps: false,
       freezeTableName: true,
       underscored: true,
-      modelName: 'vote'
+      modelName: 'comment'
     }
   );
+
+  module.exports = Comment;

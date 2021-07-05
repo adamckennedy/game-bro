@@ -1,41 +1,46 @@
 {
-  "name": "game-bro",
-  "version": "1.0.0",
-  "description": "Project 2: game-bro",
-  "main": "server.js",
-  "scripts": {
-    "test": "jest",
-    "start": "node server.js",
-    "watch": "nodemon server.js",
-    "seed": "node seeds/index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/adamckennedy/game-bro.git"
-  },
-  "author": "Stefan Hall",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/adamckennedy/game-bro/issues"
-  },
-  "homepage": "https://github.com/adamckennedy/game-bro#readme",
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "bulma": "^0.9.3",
-    "connect-session-sequelize": "^6.1.1",
-    "dotenv": "^8.6.0",
-    "express": "^4.17.1",
-    "express-handlebars": "^4.0.6",
-    "express-session": "^1.17.2",
-    "express-session-sequelize": "^2.3.0",
-    "handlebars": "^4.7.7",
-    "mysql": "^2.18.1",
-    "mysql2": "^2.2.5",
-    "nodemon": "^2.0.8",
-    "sequelize": "^5.22.4"
-  },
-  "devDependencies": {
-    "@creativebulma/bulma-divider": "^1.1.0",
-    "jest": "^26.0.1"
+    "name": "game-bro",
+    "version": "1.0.0",
+    "description": "Project 2: game-bro",
+    "main": "server.js",
+    "engines": {
+      "node": "14.x"
+    },
+    "scripts": {
+      "test": "jest",
+      "start": "node server.js",
+      "watch": "nodemon server.js",
+      "seed": "node seeds/index.js"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/adamckennedy/game-bro.git"
+    },
+    "author": "Stefan Hall",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/adamckennedy/game-bro/issues"
+    },
+    "homepage": "https://github.com/adamckennedy/game-bro#readme",
+    "dependencies": {
+      "bcrypt": "^5.0.1",
+      "bulma": "^0.9.3",
+      "connect-session-sequelize": "^6.1.1",
+      "dotenv": "^8.6.0",
+      "express": "^4.17.1",
+      "express-handlebars": "^4.0.6",
+      "express-session": "^1.17.2",
+      "express-session-sequelize": "^2.3.0",
+      "handlebars": "^4.7.7",
+      "mysql": "^2.18.1",
+      "mysql2": "^2.2.5",
+      "nodemon": "^2.0.8",
+      "sequelize": "^5.22.4"
+    },
+    "devDependencies": {
+      "@creativebulma/bulma-divider": "^1.1.0",
+      "jest": "^26.0.1"
+    }
+    
   }
-}
+  

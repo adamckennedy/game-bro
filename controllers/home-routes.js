@@ -10,23 +10,23 @@ router.get('/', (req, res) => {
         'id',
         'post_url',
         'title',
-        'created_at',
+        'user_id',
       //  [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
       ],
-      include: [
-        {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
-        {
-          model: User,
-          attributes: ['username']
-        }
-      ]
+      // include: [
+      //   {
+      //     model: Comment,
+      //     attributes: ['id', 'user_id', 'post_id', 'comment_text'],
+      //     include: {
+      //       model: User,
+      //       attributes: ['username']
+      //     }
+      //   },
+      //   {
+      //     model: User,
+      //     attributes: ['username']
+      //   }
+      // ]
     })
       .then(dbPostData => {
         // pass a single post object into the homepage template
@@ -43,9 +43,18 @@ router.get('/', (req, res) => {
   });
 
   router.get('/login', (req, res) => {
-    res.render('login', {
-      loggedIn: req.session.loggedIn
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+      res.render('login')
     });
+  // router.get('/login', (req, res) => {
+  //   res.render('login');
+  // });
+
+  router.get('/signup', (req, res) => {
+    res.render('signup');
   });
 
 
@@ -54,14 +63,14 @@ router.get('/', (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'post_url', 'title', 'created_at'],
+      attributes: ['id', 'post_url', 'title', 'user_id'],
       include: [
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          attributes: ['id', 'user_id', 'post_id', 'comment_text'],             
           include: {
             model: User,
-            attributes: ['id', 'username', 'email', 'password']
+            attributes: ['username', 'twitch']
           }
         },
         {
@@ -70,7 +79,7 @@ router.get('/', (req, res) => {
         },
         {
         model: User,
-        attributes: ['username']
+        attributes: ['username', 'twitch']
         }
       ]
     })
