@@ -8,11 +8,11 @@ router.get('/', (req, res) => {
       where: {
         user_id: req.session.user_id
       },
-      attributes: ['id', 'title', 'post_url', 'user_id'],
+      attributes: ['id', 'title', 'user_id'],
       include: [
         {
           model: Comment,
-          attributes: ['id', 'user_id', 'post_id', 'comment_text'],
+          attributes: ['id', 'user_id', 'post_id'],
           include: {
             model: User,
             attributes: ['username']
@@ -34,24 +34,24 @@ router.get('/', (req, res) => {
       });
   });
 
-  router.get('/edit/:id', withAuth, (req, res) => {
+  router.get('/edit/:id', (req, res) => {
     Post.findOne({
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'title', 'post_url', 'user_id'],
+      attributes: ['id', 'title',  'user_id'],
       include: [
         {
           model: Comment,
-          attributes: ['id', 'user_id', 'post_id', 'comment_text'],
+          attributes: ['id', 'user_id', 'post_id'],
           include: {
             model: User,
-            attributes: ['username', 'twitch']
+            attributes: ['username']
           }
         },
         {
           model: User,
-          attributes: ['username', 'twitch']
+          attributes: ['username']
         }
       ]
     })
@@ -74,25 +74,22 @@ router.get('/', (req, res) => {
       });
 });
 
-router.get('/create/', withAuth, (req, res) => {
+router.get('/create', (req, res) => {
     Post.findAll({
       where: {
         user_id: req.session.user_id
       },
-      attributes: ['id', 'title', 'post_url', 'user_id'],
+      attributes: ['id', 'title',  'user_id'],
       include: [
         {
           model: Comment,
-          attributes: ['id', 'user_id', 'post_id', 'comment_text'],
+          attributes: ['id', 'user_id', 'post_id'],
           include: {
             model: User,
-            attributes: ['username', 'twitch']
+            attributes: ['username']
           }
         },
-        {
-          model: User,
-          attributes: ['username', 'twitch']
-        }
+  
       ]
     })
       .then(dbPostData => {
@@ -104,6 +101,10 @@ router.get('/create/', withAuth, (req, res) => {
         res.status(500).json(err);
       });
   });
+
+// router.get("/create/", (req, res) => {
+//   res.render("create-post", { loggedIn: req.session.loggedIn });
+// });
 
 
 module.exports = router;

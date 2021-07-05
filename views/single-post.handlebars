@@ -6,16 +6,25 @@
 <form class="comment-form">
   <div>
     <textarea class="" name="comment-body"></textarea>
+      <label for="comment-text">Comment on a Game</label>
+      <input type="textarea" name="comment-text" id="comment-text">
+      <button id="newcomment-btn">Post Comment</button>
   </div>
 
+<!--
   <div>
     <button class="button" type="submit">add comment</button>
-  </div>
+  </div>-->
   
 </form>
 {{/if}}
 
-{{> comments post.comments}}
+{{#each post.comments as |aComment|}}
+{{> comments aComment}}
+{{/each}}
+
+
+
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
