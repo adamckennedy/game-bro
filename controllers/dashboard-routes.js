@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
       where: {
         user_id: req.session.user_id
       },
-      attributes: ['id', 'title', 'post_url', 'user_id'],
+      attributes: ['id', 'title', 'user_id'],
       include: [
         {
           model: Comment,
@@ -39,7 +39,7 @@ router.get('/', (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'title', 'post_url', 'user_id'],
+      attributes: ['id', 'title',  'user_id'],
       include: [
         {
           model: Comment,
@@ -79,7 +79,7 @@ router.get('/create', (req, res) => {
       where: {
         user_id: req.session.user_id
       },
-      attributes: ['id', 'title', 'post_url', 'user_id'],
+      attributes: ['id', 'title',  'user_id'],
       include: [
         {
           model: Comment,

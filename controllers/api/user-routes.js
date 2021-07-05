@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
             },
             {
             model: Post,
-            attributes: ['id', 'title', 'post_url', 'user_id'],
+            attributes: ['id', 'title',  'user_id'],
             },
         ],
     })
@@ -32,7 +32,7 @@ router.get('/:id', (req, res) => {
         },
         include: {
             model: Post,
-            attributes: ['id', 'title', 'post_url', 'user_id'],
+            attributes: ['id', 'title',  'user_id'],
         },
         model: Comment,
         attributes: ['id', 'user_id', 'post_id', 'comment_text'], 
