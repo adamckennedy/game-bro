@@ -8,6 +8,7 @@ async function newPostHandler(event) {
         method: 'POST',
         body: JSON.stringify({
             title,
+            user_id,
             post_url,
         }),
         headers: {
@@ -24,3 +25,4 @@ async function newPostHandler(event) {
     }
 
     document.querySelector('#create-new-post-btn').addEventListener('click', newPostHandler);
+    //document.querySelector('.new-post-form').addEventListener('submit', newPostHandler);

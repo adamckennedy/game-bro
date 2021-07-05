@@ -73,7 +73,7 @@ router.get('/', (req, res) => {
           attributes: ['id', 'user_id', 'post_id', 'comment_text'],             
           include: {
             model: User,
-            attributes: ['username', 'twitch']
+            attributes: ['username']
           }
         },
         {
@@ -82,7 +82,7 @@ router.get('/', (req, res) => {
         },
         {
         model: User,
-        attributes: ['username', 'twitch']
+        attributes: ['username']
         }
       ]
     })

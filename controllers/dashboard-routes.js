@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
       include: [
         {
           model: Comment,
-          attributes: ['id', 'user_id', 'post_id', 'comment_text'],
+          attributes: ['id', 'user_id', 'post_id'],
           include: {
             model: User,
             attributes: ['username']
@@ -43,15 +43,15 @@ router.get('/', (req, res) => {
       include: [
         {
           model: Comment,
-          attributes: ['id', 'user_id', 'post_id', 'comment_text'],
+          attributes: ['id', 'user_id', 'post_id'],
           include: {
             model: User,
-            attributes: ['username', 'twitch']
+            attributes: ['username']
           }
         },
         {
           model: User,
-          attributes: ['username', 'twitch']
+          attributes: ['username']
         }
       ]
     })
@@ -74,7 +74,7 @@ router.get('/', (req, res) => {
       });
 });
 
-router.get('/create/', (req, res) => {
+router.get('/create', (req, res) => {
     Post.findAll({
       where: {
         user_id: req.session.user_id
@@ -83,27 +83,28 @@ router.get('/create/', (req, res) => {
       include: [
         {
           model: Comment,
-          attributes: ['id', 'user_id', 'post_id', 'comment_text'],
+          attributes: ['id', 'user_id', 'post_id'],
           include: {
             model: User,
-            attributes: ['username', 'twitch']
+            attributes: ['username']
           }
         },
-        {
-          model: User,
-          attributes: ['username', 'twitch']
-        }
+  
       ]
     })
       .then(dbPostData => {
         const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('create-new-post', { posts, loggedIn: true });
+        res.render('create-post', { posts, loggedIn: true });
       })
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
       });
   });
+
+// router.get("/create/", (req, res) => {
+//   res.render("create-post", { loggedIn: req.session.loggedIn });
+// });
 
 
 module.exports = router;

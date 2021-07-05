@@ -8,6 +8,7 @@
     <title>Game Muffin - browse, add, rate, and search check for deals on your favorite games!</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Orelega+One&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
@@ -22,16 +23,20 @@
             <a href="/" class="navbar-item is-hoverable pt-1">home</a>
             <a href="/dashboard" class="navbar-item is-hoverable pt-1">dashboard</a>
             <a href="/dashboard/create/" class="navbar-item is-hoverable pt-1 mr-4">create post</a>
-            <button id="logout" class="button is-danger">logout</button>
+            <button id="logout" class="button btn-primary center-align card-panel hoverable">logout</button>
             {{else}}
             <a href="/" class="navbar-item is-hoverable pt-1">home</a>
-            <a href="/login" class="button is-primary" id="login-btn">login</a>
+            <a href="/login" class="button btn-primary center-align card-panel hoverable" id="login-btn">login</a>
+            <a href="/signup" class="button btn-primary center-align card-panel hoverable" id="login-btn">sign up</a>
             {{/if}}
         </nav>
         
     </header>
 
-    <main id="container" class="center-align">
+<main>
+    {{{ body }}}
+</main>
+    {{!-- <main id="container" class="center-align">
 
         <!-- Game content goes here -->
         <div id="gameDiv" class="gameDiv center-align card-panel hoverable">
@@ -64,7 +69,7 @@
         </div> -->
 
         <!--Append Game Deal Here-->
-        {{#if loggedIn}}
+        {{!-- {{#if loggedIn}}
         <div id="musicDiv" class="hidden center-align">
             <p id="addMusicMsg" class="description"></p>
 
@@ -75,10 +80,10 @@
             </div>
 
         </div>
-        {{/if}}
+        {{/if}} --}}
     
-    </main>
-    {{{ body }}}
+    
+   
 
      {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
@@ -88,7 +93,7 @@
             <p>
             <a href="/">homepage</a>{{#if loggedIn}} | 
             <a href="/dashboard/">dashboard</a> | 
-            <a href="/dashboard/create/">create new post</a>
+            <a href="/dashboard/create">create new post</a>
             {{else}}
              | <a href="/login/">login</a>
             {{/if}}
