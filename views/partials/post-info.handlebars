@@ -3,24 +3,46 @@
     
         <div class="column">
             <p class=""></p>
-      <a href="/post/{{id}}"  class="">{{title}} </a></p>
-      </div>
+      <a href="/post/{{id}}"  class="">{{title}}</a>
+      <a href="/posts"  class="">{{post_content}}</a><</p>
 
+      </div>
       <div class="column">
       <span class=""> </span>
       </div>
     
   </header>
-
-    <div class="card-content">
+ 
+    
+   <div class="card-content">
         <div class="content">
             {{post_content}}
         </div>
-            <div class="">
-                <b>{{user.username}}</b> | 
-                <a href="https://twitter.com/{{user.twitter}}"><i class="fab fa-twitter"></i></a> 
+    <a href="/post/{{id}}">
+    <div class="card-content">
+        <b>Posted by </b>
+            <a>\{{user.username}}</a>
+    </div>
+
+
+    {{!-- {{#each posts as |post|}} 
+    \{{post.post_content}}
+    {{user.username}}
+    {{/each}}
+    --}}
+ <li>
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+    </li>  
+</a> 
+          
+        
+
+       
+          <!--      <b>{{user.username}}</b> 
+               | <a href="https://twitter.com/{{user.twitter}}"><i class="fab fa-twitter"></i></a> 
                 <a href="https://github.com/{{user.github}}"><i class="fab fa-github"></i></a>
-                 | {{format_date created_at}} | <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
-            </div>
+                 | {{'format_date created_at'}} | <a href="/post/{{id}}">{{post.post_content}} </a>
+            </div>-->
         
     </div>
+

@@ -32,7 +32,7 @@ User.init(
          },
         //  twitch: {
         //      type: DataTypes.STRING,
-        //      allowNull: true,
+        //      allowNull: false,
         //      unique: true,    
         //  },
          password: {

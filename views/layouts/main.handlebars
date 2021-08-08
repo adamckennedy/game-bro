@@ -13,11 +13,9 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
-<body>
-
-    <div class="wrapper">
+<div class="wrapper">
     <header>
-        <h1 class="has-text-black px-3 py-3 has-text-weight-bold">gameMuffin</h1>
+        <h1 id="logo">gameMuffin</h1>
         <nav class="navbar mt-2">
             {{#if loggedIn}}
             <a href="/" class="navbar-item is-hoverable pt-1">home</a>
@@ -30,12 +28,10 @@
             <a href="/signup" class="button btn-primary center-align card-panel hoverable" id="login-btn">sign up</a>
             {{/if}}
         </nav>
-        
+
     </header>
 
-
-
-<main id="container" class="center-align">
+    <main id="container" class="center-align">
 
         <!-- Game content goes here -->
         <div id="gameDiv" class="gameDiv center-align card-panel hoverable">
@@ -53,11 +49,8 @@
                 </p>
 
             </div>
-           
 
-   </div>
-   </main>
-      {{{ body }}}
+
             <!-- Click this button to display random painting 
             <button id="randomArtBtn" class="btn">Surprise Me!</button>-->
 
@@ -70,40 +63,41 @@
             </form>
         </div> -->
 
-        <!--Append Game Deal Here-->
-        {{!-- {{#if loggedIn}}
-        <div id="musicDiv" class="hidden center-align">
-            <p id="addMusicMsg" class="description"></p>
+            <!--Append Game Deal Here-->
+            {{#if loggedIn}}
+            <div id="musicDiv" class="hidden center-align">
+                <p id="addMusicMsg" class="description"></p>
 
-            <!--Display game the user searches for/selects.-->
-            <div id="displaySongDiv">
-                <!--Append deal to page here-->
+                <!--Display game the user searches for/selects.-->
+                <div id="displaySongDiv">
+                    <!--Append deal to page here-->
+
+                </div>
 
             </div>
+            {{/if}}
+    </main>
+    {{{ body }}}
 
-        </div>
-        {{/if}} --}}
-    
-    
-   
-
-     {{#if loggedIn}}
+    {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
-  <footer class="footer rows pb-2">
+    <footer class="footer rows pb-2">
         <div class="row-is-full content has-text-centered">
             <p>
-            <a href="/">homepage</a>{{#if loggedIn}} | 
-            <a href="/dashboard/">dashboard</a> | 
-            <a href="/dashboard/create">create new post</a>
-            {{else}}
-             | <a href="/login/">login</a>
-            {{/if}}
+                <a href="/">homepage</a>{{#if loggedIn}} |
+                <a href="/dashboard/">dashboard</a> |
+                <a href="/dashboard/create">create new post</a>
+                {{else}}
+                | <a href="/login/">login</a>
+                {{/if}}
             </p>
         </div>
-        </footer>
-    
+    </footer>
 
-</body>
+
+    </body>
 
 </html>
+
+<script src="/javascript/create-post.js"></script>
