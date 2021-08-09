@@ -4,7 +4,7 @@
         <div class="column">
             <p class=""></p>
       <a href="/post/{{id}}"  class="">{{title}}</a>
-      <a href="/posts"  class="">{{post_content}}</a><</p>
+      <a href="/posts"  class="">{{post_content}}</a></p>
 
       </div>
       <div class="column">
@@ -21,7 +21,7 @@
     <a href="/post/{{id}}">
     <div class="card-content">
         <b>Posted by </b>
-            <a>\{{user.username}}</a>
+            <a>{{user.username}}</a>
     </div>
 
 
@@ -30,6 +30,14 @@
     {{user.username}}
     {{/each}}
     --}}
+
+    <!-- Add if statement to only allow a user to edit this ONLY for their 
+    Comments, no other comments that aren't associated with their account
+    If they click edit, we need a check on the backend to make sure they're 
+    the same person - make sure it's the right user. 
+    
+    Use req.session.user_id - check to see if the user is a match for
+    the session ID -->
  <li>
       <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
     </li>  

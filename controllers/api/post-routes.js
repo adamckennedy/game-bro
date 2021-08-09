@@ -11,8 +11,7 @@ router.get('/', (req, res) => {
       'id',
       'title',
       'user_id',
-      'post_content',
-      'comment_text'
+      'post_content'
     ],
     include: [
       // include the Comment model here:
