@@ -13,14 +13,15 @@
     <div class="is-pulled-right">
        created by you on {{format_date post.created_at}}
       |
-      <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+      <a href="/post/{{post.id}}">{{post.comments.length}} </a> 
+      <!--{{format_plural "comment" post.comments.length}}-->
     </div>
     <button type="submit" class="button">save post</button>
     <button type="button" class="button delete-post-btn">delete post</button>
   </form>
 </article>
 
-{{> comments post.comments}}
+<!-- {{> comments post.comments}}-->
 
 <script src="/javascript/edit-post.js"></script>
 <script src="/javascript/delete-post.js"></script>

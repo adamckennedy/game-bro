@@ -1,5 +1,7 @@
 const router = require('express').Router();
-const { User, Post, Comment, Vote } = require('../../models');
+const { User, Post, Comment } = require('../../models');
+const sequelize = require('../../config/connection');
+
 
 // get all 
 router.get('/', (req, res) => {
@@ -9,22 +11,23 @@ router.get('/', (req, res) => {
       'id',
       'title',
       'user_id',
+      'post_content'
     ],
     include: [
       // include the Comment model here:
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id'],
+      //  as: 'comments',
+        attributes: ['id', 'user_id', 'post_id', 'comment_text'],
         include: {
           model: User,
-          attributes: ['username']
-        }
-      },
-      {
+          attributes: ['id', 'username', 'email']
+        },
+        },      {
         model: User,
-        attributes: ['username']
+        attributes: ['id', 'username', 'email']
       }
-    ]
+    ],
    })
    .then(dbPostData => res.json(dbPostData))
    .catch(err => {
@@ -34,27 +37,23 @@ router.get('/', (req, res) => {
 
 });
 
-
    router.get('/:id', (req, res) => {
     Post.findOne({
       where: {
         id: req.params.id
       },
-      attributes: ['id',  'title', 'user_id'],
+      attributes: ['id', 'title', 'user_id', 'post_content'],
       include: [
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id'],
+      //    as: 'comments',
+          attributes: ['id', 'user_id', 'post_id', 'comment_text'],
         },
         {
           model: User,
-          attributes: ['username'],
+          attributes: ['id', 'username', 'email'],
         },
-        {
-        model: Vote,
-        attributes: ['id', 'vote'],
-        }
-      ]
+      ],
     })
       .then(dbPostData => {
         if (!dbPostData) {
@@ -74,7 +73,7 @@ router.get('/', (req, res) => {
     Post.create({
       title: req.body.title,
       post_content: req.body.post_content,
-      user_id: req.body.user_id
+      user_id: req.session.user_id
     })
       .then(dbPostData => res.json(dbPostData))
       .catch(err => {
@@ -84,19 +83,19 @@ router.get('/', (req, res) => {
   });
 
   // PUT /api/posts/upvote
-  router.put('/upvote', (req, res) => {
-    Post.upvote(req.body, { Vote })
-      .then(updatedPostData => res.json(updatedPostData))
-      .catch(err => {
-        console.log(err);
-        res.status(400).json(err);
-      });
-  });
+  // router.put('/upvote', (req, res) => {
+  //   Post.upvote(req.body, { Vote })
+  //     .then(updatedPostData => res.json(updatedPostData))
+  //     .catch(err => {
+  //       console.log(err);
+  //       res.status(400).json(err);
+  //     });
+  // });
 
   router.put('/:id', (req, res) => {
     Post.update({
         title: req.body.title,
-        post_content: req.body.post_content
+        post_content: req.body.body
       },
       {
         where: {

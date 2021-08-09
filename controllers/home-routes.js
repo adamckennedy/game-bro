@@ -6,14 +6,11 @@ const { Post, User, Comment } = require('../models');
 router.get('/', (req, res) => {
   console.log(req.session);
     Post.findAll({
-      attributes: [
-        'id',
-        
-        'title',
-        'user_id',
+
       //  [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
-      ],
-      // include: [
+    
+      
+      include: [
       //   {
       //     model: Comment,
       //     attributes: ['id', 'user_id', 'post_id', 'comment_text'],
@@ -22,11 +19,11 @@ router.get('/', (req, res) => {
       //       attributes: ['username']
       //     }
       //   },
-      //   {
-      //     model: User,
-      //     attributes: ['username']
-      //   }
-      // ]
+        {
+          model: User,
+          attributes: { exclude: 'password' }
+        }
+      ]
     })
       .then(dbPostData => {
         // pass a single post object into the homepage template
@@ -58,7 +55,7 @@ router.get('/', (req, res) => {
   });
 
   router.get('/dashboard', (req, res) => {
-    res.render('dashboard');
+    res.render('dashboard'); 
   });
 
   router.get('/post/:id', (req, res) => {
@@ -76,10 +73,10 @@ router.get('/', (req, res) => {
             attributes: ['username']
           }
         },
-        {
-        model: Vote,
-        attributes: ['id', 'vote']
-        },
+        // {
+        // model: Vote,
+        // attributes: ['id', 'vote']
+        // },
         {
         model: User,
         attributes: ['username']
