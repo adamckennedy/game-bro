@@ -39,7 +39,7 @@ router.get('/', (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'title',  'user_id'],
+      attributes: ['id', 'title', 'user_id'],
       include: [
         {
           model: Comment,
@@ -75,31 +75,10 @@ router.get('/', (req, res) => {
 });
 
 router.get('/create', (req, res) => {
-    Post.findAll({
-      where: {
-        user_id: req.session.user_id
-      },
-      attributes: ['id', 'title',  'user_id'],
-      include: [
-        {
-          model: Comment,
-          attributes: ['id', 'user_id', 'post_id'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
+    
+    res.render('create-post');
+
   
-      ]
-    })
-      .then(dbPostData => {
-        const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('create-post', { posts, loggedIn: true });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-      });
   });
 
 // router.get("/create/", (req, res) => {

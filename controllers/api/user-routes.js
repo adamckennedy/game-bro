@@ -4,7 +4,7 @@ const { User, Post, Comment } = require('../../models');
 // GET /api/users
 router.get('/', (req, res) => {
     User.findAll({
-        attributes: ['id', 'username', 'email', 'password'],
+        attributes:  ['id', 'username', 'email'], //, 'twitch'],
         include: [
             {
             model: Comment,
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
             },
             {
             model: Post,
-            attributes: ['id', 'title',  'user_id'],
+            attributes: ['id', 'title', 'user_id', 'post_content'],
             },
         ],
     })
@@ -26,13 +26,13 @@ router.get('/', (req, res) => {
 // GET /api/users/1
 router.get('/:id', (req, res) => {
     User.findOne({
-        attributes: ['id', 'username', 'email', 'password'],
+        attributes: ['id', 'username', 'email'], //, 'twitch'],
         where: {
             id: req.params.id
         },
         include: {
             model: Post,
-            attributes: ['id', 'title',  'user_id'],
+            attributes: ['id', 'title',  'user_id', 'post_content'],
         },
         model: Comment,
         attributes: ['id', 'user_id', 'post_id', 'comment_text'], 
@@ -54,14 +54,15 @@ router.post('/', (req, res) => {
     User.create({
         username: req.body.username,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+     //   twitch: req.body.twitch
     })
     .then(dbUserData => {
         //access session information in the routes
         req.session.save(() => {
             req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
-        //    req.session.twitch = dbUserData.twitch;
+          //  req.session.twitch = dbUserData.twitch;
             req.session.loggedIn = true;
             res.json(dbUserData);
         });
@@ -99,7 +100,7 @@ router.post('/login', (req, res) => {
             // declare session variables
             req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
-           // req.session.twitch = dbUserData.twitch;
+        //    req.session.twitch = dbUserData.twitch;
             req.session.loggedIn = true;
 
             res.json({
