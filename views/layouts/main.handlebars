@@ -18,20 +18,20 @@
         <h1 id="logo">gameMuffin</h1>
         <nav class="navbar mt-2">
             {{#if loggedIn}}
-            <a href="/" class="navbar-item is-hoverable pt-1">home</a>
+            <a href="/" class="navbar-item pt-1">home</a>
             <a href="/dashboard" class="navbar-item is-hoverable pt-1">dashboard</a>
-            <a href="/dashboard/create/" class="navbar-item is-hoverable pt-1 mr-4">create post</a>
-            <button id="logout" class="button btn-primary center-align card-panel hoverable">logout</button>
+            <a href="/dashboard/create/" class="navbar-item pt-1 mr-4">create post</a>
+            <button id="logout" class="navbar-item center-align hoverable">logout</button>
             {{else}}
             <a href="/" class="navbar-item is-hoverable pt-1">home</a>
-            <a href="/login" class="button btn-primary center-align card-panel hoverable" id="login-btn">login</a>
-            <a href="/signup" class="button btn-primary center-align card-panel hoverable" id="login-btn">sign up</a>
+            <a href="/login" class="navbar-item enter-align hoverable" id="login-btn">login</a>
+            <a href="/signup" class="navbar-item center-align hoverable" id="login-btn">sign up</a>
             {{/if}}
         </nav>
 
     </header>
 
-    <main id="container" class="center-align">
+    {{!-- <main id="container" class="center-align">
 
         <!-- Game content goes here -->
         <div id="gameDiv" class="gameDiv center-align card-panel hoverable">
@@ -50,38 +50,14 @@
 
             </div>
 
-
-            <!-- Click this button to display random painting 
-            <button id="randomArtBtn" class="btn">Surprise Me!</button>-->
-
-
-            <!-- Search here for a specific painting
-            <form id="artSearchBar">
-                <input type="search" id="artSearchTerm" class="searchBar center-align"
-                    placeholder="Search By Artist or Culture">
-                <button id="artSearchBtn" type="submit">Search for a Game</button>
-            </form>
-        </div> -->
-
-            <!--Append Game Deal Here-->
-            {{#if loggedIn}}
-            <div id="musicDiv" class="hidden center-align">
-                <p id="addMusicMsg" class="description"></p>
-
-                <!--Display game the user searches for/selects.-->
-                <div id="displaySongDiv">
-                    <!--Append deal to page here-->
-
-                </div>
-
-            </div>
-            {{/if}}
-    </main>
+    </main> --}}
     {{{ body }}}
 
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
+
+    {{#if loggedIn}}
     <footer class="footer rows pb-2">
         <div class="row-is-full content has-text-centered">
             <p>
@@ -94,6 +70,7 @@
             </p>
         </div>
     </footer>
+    {{/if}}
 
 
     </body>

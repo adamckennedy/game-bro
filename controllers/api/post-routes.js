@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const { User, Post, Comment, Vote } = require('../../models');
 
-
-
 // get all 
 router.get('/', (req, res) => {
    Post.findAll({
@@ -10,7 +8,6 @@ router.get('/', (req, res) => {
     attributes: [
       'id',
       'title',
-      
       'user_id',
     ],
     include: [
@@ -76,7 +73,7 @@ router.get('/', (req, res) => {
   router.post('/', (req, res) => {
     Post.create({
       title: req.body.title,
-     // post_content: req.body.post_content,
+      post_content: req.body.post_content,
       user_id: req.body.user_id
     })
       .then(dbPostData => res.json(dbPostData))
@@ -99,7 +96,7 @@ router.get('/', (req, res) => {
   router.put('/:id', (req, res) => {
     Post.update({
         title: req.body.title,
-     //   post_content: req.body.post_content
+        post_content: req.body.post_content
       },
       {
         where: {

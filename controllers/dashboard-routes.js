@@ -6,7 +6,8 @@ const { Post, User, Comment } = require('../models');
 router.get('/', (req, res) => {
     Post.findAll({
       where: {
-        user_id: req.session.user_id
+        user_id: req.session.user_id,
+        loggedIn: req.session.loggedIn
       },
       attributes: ['id', 'title', 'user_id'],
       include: [
@@ -37,7 +38,8 @@ router.get('/', (req, res) => {
   router.get('/edit/:id', (req, res) => {
     Post.findOne({
       where: {
-        id: req.params.id
+        id: req.params.id,
+        loggedIn: req.session.loggedIn
       },
       attributes: ['id', 'title',  'user_id'],
       include: [
@@ -77,7 +79,8 @@ router.get('/', (req, res) => {
 router.get('/create', (req, res) => {
     Post.findAll({
       where: {
-        user_id: req.session.user_id
+        user_id: req.session.user_id,
+        loggedIn: req.session.loggedIn
       },
       attributes: ['id', 'title',  'user_id'],
       include: [
@@ -101,10 +104,5 @@ router.get('/create', (req, res) => {
         res.status(500).json(err);
       });
   });
-
-// router.get("/create/", (req, res) => {
-//   res.render("create-post", { loggedIn: req.session.loggedIn });
-// });
-
 
 module.exports = router;
