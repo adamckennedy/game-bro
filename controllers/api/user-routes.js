@@ -4,15 +4,15 @@ const { User, Post, Comment } = require('../../models');
 // GET /api/users
 router.get('/', (req, res) => {
     User.findAll({
-        attributes:  ['id', 'username', 'email'], //, 'twitch'],
+        attributes: ['id', 'username', 'email'], //, 'twitch'],
         include: [
             {
                 model: Comment,
                 attributes: ['id', 'user_id', 'post_id', 'comment_text'],
             },
             {
-            model: Post,
-            attributes: ['id', 'title', 'user_id', 'post_content'],
+                model: Post,
+                attributes: ['id', 'title', 'user_id', 'post_content'],
             },
         ],
     })
@@ -32,7 +32,7 @@ router.get('/:id', (req, res) => {
         },
         include: {
             model: Post,
-            attributes: ['id', 'title',  'user_id', 'post_content'],
+            attributes: ['id', 'title', 'user_id', 'post_content'],
         },
         model: Comment,
         attributes: ['id', 'user_id', 'post_id', 'comment_text'],
@@ -55,21 +55,23 @@ router.post('/', (req, res) => {
         username: req.body.username,
         email: req.body.email,
         password: req.body.password,
-     //   twitch: req.body.twitch
+        //   twitch: req.body.twitch
     })
-    .then(dbUserData => {
-        //access session information in the routes
-        req.session.save(() => {
-            req.session.user_id = dbUserData.id;
-            req.session.username = dbUserData.username;
-          //  req.session.twitch = dbUserData.twitch;
-            req.session.loggedIn = true;
-            res.json(dbUserData);
+        .then(dbUserData => {
+            //access session information in the routes
+            req.session.save(() => {
+                req.session.user_id = dbUserData.id;
+                req.session.username = dbUserData.username;
+                //  req.session.twitch = dbUserData.twitch;
+                req.session.loggedIn = true;
+                res.json(dbUserData);
+            });
+            // .then(dbUserData => res.json(dbUserData))
+            // .catch(err => {
+            //     console.log(err);
+            //     res.status(500).json(err);
         });
-    // .then(dbUserData => res.json(dbUserData))
-    // .catch(err => {
-    //     console.log(err);
-    //     res.status(500).json(err);
+
 });
 
 router.post('/login', (req, res) => {
@@ -100,7 +102,7 @@ router.post('/login', (req, res) => {
             // declare session variables
             req.session.user_id = dbUserData.id;
             req.session.username = dbUserData.username;
-        //    req.session.twitch = dbUserData.twitch;
+            //    req.session.twitch = dbUserData.twitch;
             req.session.loggedIn = true;
 
             res.json({
@@ -168,6 +170,5 @@ router.delete('/:id', (req, res) => {
             res.status(500).json(err);
         });
 });
-
 
 module.exports = router;
