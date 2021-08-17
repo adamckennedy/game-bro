@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
       {
         model: Comment,
       //  as: 'comments',
-        attributes: ['id', 'user_id', 'post_id', 'comment_text'],
+        attributes: ['id', 'user_id', 'post_id'],
         include: {
           model: User,
           attributes: ['id', 'username', 'email']
@@ -47,7 +47,7 @@ router.get('/', (req, res) => {
         {
           model: Comment,
       //    as: 'comments',
-          attributes: ['id', 'user_id', 'post_id', 'comment_text'],
+          attributes: ['id', 'user_id', 'post_id'],
         },
         {
           model: User,
@@ -95,7 +95,7 @@ router.get('/', (req, res) => {
   router.put('/:id', (req, res) => {
     Post.update({
         title: req.body.title,
-        post_content: req.body.body
+        post_content: req.body.post_content
       },
       {
         where: {
