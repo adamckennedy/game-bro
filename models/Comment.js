@@ -26,14 +26,8 @@ Comment.init(
           model: 'post',
           key: 'id'
         },
-      comment_text: {
-        type: DataTypes.STRING,
-        allowNull: true,
-        // 1 char at least
-        validate: {
-          len: [1]
-        },
-      },
+    
+      
       }
     },
     {
