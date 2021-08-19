@@ -67,7 +67,7 @@ router.get('/', (req, res) => {
       include: [
         {
           model: Comment,
-          attributes: ['id', 'user_id', 'post_id', 'comment_text'],             
+          attributes: ['id', 'user_id', 'post_id'],             
           include: {
             model: User,
             attributes: ['username']
@@ -93,7 +93,7 @@ router.get('/', (req, res) => {
       const post = dbPostData.get({ plan: true});
       console.log(post);
 
-      res.render('single-post', {
+      res.render('edit-post', {
         post,
         loggedIn: req.session.loggedIn
       });

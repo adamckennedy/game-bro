@@ -4,7 +4,7 @@
         <div class="column">
             <p class=""></p>
       <a href="/post/{{id}}"  class="">{{title}}</a>
-      <a href="/posts"  class="">{{post_content}}</a></p>
+
 
       </div>
       <div class="column">
@@ -18,7 +18,7 @@
         <div class="content">
             {{post_content}}
         </div>
-    <a href="/post/{{id}}">
+    <a href="/post/{{id}}"></a>
     <div class="card-content">
         <b>Posted by </b>
             <a>{{user.username}}</a>
@@ -39,7 +39,8 @@
     Use req.session.user_id - check to see if the user is a match for
     the session ID -->
  <li>
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+  <!--    <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>-->
+  <a href="/post/{{id}}" class="edit-link">Edit post</a>
     </li>  
 </a> 
           

@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
         user_id: req.session.user_id,
         loggedIn: req.session.loggedIn
       },
-      attributes: ['id', 'title', 'user_id'],
+      attributes: ['id', 'title', 'user_id', 'post_content'],
       include: [
         {
           model: Comment,
@@ -41,7 +41,7 @@ router.get('/', (req, res) => {
         id: req.params.id,
         loggedIn: req.session.loggedIn
       },
-      attributes: ['id', 'title', 'user_id'],
+      attributes: ['id', 'title', 'user_id', 'post_content'],
       include: [
         {
           model: Comment,

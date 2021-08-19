@@ -31,12 +31,16 @@
 
     </header>
 
-    {{!-- <main id="container" class="center-align">
+    <!--
+ {{#if loggedIn}}
+{{else}}
 
-        <!-- Game content goes here -->
+     <main id="container" class="center-align">
+
+         Game content goes here
         <div id="gameDiv" class="gameDiv center-align card-panel hoverable">
 
-            <!--Default image-->
+          
             <div id="displayGame">
                 <img id="defaultImg" src="/stylesheets/default-img.png" alt="">
                 <img id="errorImg" class="hidden" src="stylesheets/error-img.jpg" alt="">
@@ -50,12 +54,18 @@
 
             </div>
 
-    </main> --}}
-    {{{ body }}}
+    </main>
+   
+      {{/if}}--> 
+    <main>
+        {{{ body }}}
+    </main>
+    
 
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
+    
 
     {{#if loggedIn}}
     <footer class="footer rows pb-2">
@@ -63,7 +73,8 @@
             <p>
                 <a href="/">homepage</a>{{#if loggedIn}} |
                 <a href="/dashboard/">dashboard</a> |
-                <a href="/dashboard/create">create new post</a>
+                <a href="/dashboard/create">create review</a> |
+                <a href="/dashboard/edit">edit review</a>
                 {{else}}
                 | <a href="/login/">login</a>
                 {{/if}}
@@ -72,13 +83,8 @@
     </footer>
     {{/if}}
 
-<<<<<<< HEAD
+    
+
 
     </body>
-
-</html>
-=======
-
-    </body>
->>>>>>> 3b6f8cd65becc036cc4b331129fdae54319b942a
 
