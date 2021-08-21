@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../../models');
 const sequelize = require('../../config/connection');
+const withAuth = require('../../utils/auth');
 
 
 // get all 
@@ -40,8 +41,7 @@ router.get('/', (req, res) => {
    router.get('/:id', (req, res) => {
     Post.findOne({
       where: {
-        id: req.params.id,
-        loggedIn: req.session.loggedIn
+        id: req.params.id
       },
       attributes: ['id', 'title', 'user_id', 'post_content'],
       include: [
@@ -70,7 +70,7 @@ router.get('/', (req, res) => {
   });
 
 
-  router.post('/', (req, res) => {
+  router.post('/', withAuth, (req, res) => {
     Post.create({
       title: req.body.title,
       post_content: req.body.post_content,
@@ -84,6 +84,16 @@ router.get('/', (req, res) => {
       });
   });
 
+  // PUT /api/posts/upvote
+  // router.put('/upvote', (req, res) => {
+  //   Post.upvote(req.body, { Vote })
+  //     .then(updatedPostData => res.json(updatedPostData))
+  //     .catch(err => {
+  //       console.log(err);
+  //       res.status(400).json(err);
+  //     });
+  // });
+
   router.put('/:id', (req, res) => {
     Post.update({
         title: req.body.title,
@@ -92,7 +102,7 @@ router.get('/', (req, res) => {
       {
         where: {
           id: req.params.id,
-          loggedIn: req.session.loggedIn
+   //       loggedIn: req.session.loggedIn
         }
       })
       .then(dbPostData => {
@@ -112,7 +122,7 @@ router.get('/', (req, res) => {
     Post.destroy({
       where: {
         id: req.params.id,
-        
+        loggedIn: req.session.loggedIn
       }
     })
       .then(dbPostData => {
