@@ -16,6 +16,9 @@ Find your favorite games and review them on this personal Library!
 ## Sample Walkthrough
 https://drive.google.com/file/d/1mUmgoD4B2zMboNXlSHbkLjIin0nxeU6m/view
 
+## Screenshot
+[Screenshot](/assets/images/live-screenshot.png)
+
 ## Live Website
 https://game-muffin.herokuapp.com/
 
