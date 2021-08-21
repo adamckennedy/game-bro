@@ -6,19 +6,25 @@
 
 {{#if posts.length}}
 
-  {{post_content}}
+  
      <ol>
     {{#each posts as |post|}}
   
     <li>
       {{> post-info post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit Review</a>
     </li>
     {{/each}}
   </ol>
+ 
+ 
+  
 {{else}}
 <h6 class="pb-4 has-text-centered is-italic">you do not currently have any games</h6>
+
 {{/if}}
+
+
 
 <script src="/javascript/create-post.js"></script>
 

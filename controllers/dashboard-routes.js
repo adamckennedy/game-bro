@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Post, User, Comment } = require('../models');
+const withAuth = require('../utils/auth')
 
 
-router.get('/', (req, res) => {
+router.get('/', withAuth, (req, res) => {
     Post.findAll({
       where: {
         user_id: req.session.user_id,
@@ -11,14 +12,6 @@ router.get('/', (req, res) => {
       },
       attributes: ['id', 'title', 'user_id', 'post_content'],
       include: [
-        {
-          model: Comment,
-          attributes: ['id', 'user_id', 'post_id'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
         {
           model: User,
           attributes: ['username']
@@ -35,22 +28,15 @@ router.get('/', (req, res) => {
       });
   });
 
-  router.get('/edit/:id', (req, res) => {
+ 
+
+  router.get('/edit/:id', withAuth, (req, res) => {
     Post.findOne({
       where: {
         id: req.params.id,
-        loggedIn: req.session.loggedIn
       },
       attributes: ['id', 'title', 'user_id', 'post_content'],
       include: [
-        {
-          model: Comment,
-          attributes: ['id', 'user_id', 'post_id'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
         {
           model: User,
           attributes: ['username']
@@ -67,7 +53,7 @@ router.get('/', (req, res) => {
 
         res.render('edit-post', {
             post,
-            loggedIn: true
+            loggedIn: req.session.loggedIn
             });
       })
       .catch(err => {
@@ -76,11 +62,11 @@ router.get('/', (req, res) => {
       });
 });
 
-router.get('/create', (req, res) => {
-    
-    res.render('create-post');
+router.get('/create', withAuth, (req, res) => { 
+  res.render('create-post', {
+    loggedIn: req.session.loggedIn
+  }); 
+});
 
-  
-  });
 
 module.exports = router;

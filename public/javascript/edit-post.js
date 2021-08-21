@@ -1,8 +1,13 @@
 async function putPostHandler(event) {
     event.preventDefault();
 
-    const title = document.querySelector('#post-title').value.trim();
-    const post_content = document.querySelector('#post-content').value.trim();
+    // const title = document.querySelector('#post-title').value.trim();
+    // const post_content = document.querySelector('#post-content').value.trim();
+    const title = document.querySelector('input[name="post-title"]').value;
+    const post_content = document.querySelector('input[name="post-content"]').value;
+    const id = window.location.toString().split('/')[
+        window.location.toString().split('/').length - 1
+    ];
 
     const response = await fetch(`/api/posts/${id}`,  {
         method: 'put',
@@ -16,7 +21,7 @@ async function putPostHandler(event) {
     });
 
     if (response.ok) {
-        document.location.replace('/');
+        document.location.replace('/dashboard');
     }
         else {
             alert(response.statusText);
@@ -24,4 +29,4 @@ async function putPostHandler(event) {
     }
 
 
-    document.querySelector('#edit-post-btn"').addEventListener('click', putPostHandler);
+    document.querySelector('#edit-post-btn').addEventListener('click', putPostHandler);
