@@ -2,13 +2,11 @@
     box-sizing: border-box;
 }
 
-/* Initial Home and Dashboard Buttons*/
 a:hover {
     color:rgb(5, 14, 143);
     transition: all .3s ease-in-out;
     cursor: pointer;
 }
-
 
 body, html {
     font-family: 'Open Sans', sans-serif;
@@ -24,7 +22,6 @@ body, html {
     display: flex;
     flex-direction: column;
   }
-
 
 header {
     text-align: center;
