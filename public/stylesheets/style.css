@@ -30,8 +30,8 @@ header {
     text-align: center;
 }
 
-  #logo {
-    background: transparent url("/images/logo.png") no-repeat scroll 0% 0%;
+#logo {
+  background: transparent url("/images/logo.png") no-repeat scroll 0% 0%;
     display: block;
     width: 100%;
     height: 100%;
@@ -44,8 +44,105 @@ header {
     transition-timing-function: linear;
     text-indent: -3333px;
 }
+
+#default-img {
+  width: 3%;
+  height: 3%;
+    position: relative;
+    margin: 15px;
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    -o-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: center center;
+    -moz-transform-origin: center center;
+    -ms-transform-origin: center center;
+    -o-transform-origin: center center;
+    transition: all 1s; 
+    -webkit-animation-delay:1s;
+    -moz-animation-delay:1s;
+    -ms-animation-delay:1s;
+    -o-animation-delay:1s;
+    animation-dely:1s;
+    -webkit-animation: 1600ms pulsate infinite alternate ease-in-out;
+    -moz-animation: 1600ms pulsate infinite alternate ease-in-out;
+    -ms-animation: 1600ms pulsate infinite alternate ease-in-out;
+    -o-animation: 1600ms pulsate infinite alternate ease-in-out;
+    animation: 1600ms pulsate infinite alternate ease-in-out;
+  }
+  #default-img:before,
+  #default-img:after { 
+    position: absolute; 
+    content: "";
+    left: 50px;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    -moz-border-radius: 50px 50px 0 0;
+    border-radius: 50px 50px 0 0;
+    -webkit-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    -webkit-transform-origin: 0 100%;
+       -moz-transform-origin: 0 100%;
+        -ms-transform-origin: 0 100%;
+         -o-transform-origin: 0 100%;
+            transform-origin: 0 100%;
+    left: 0;
+    -webkit-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+    -webkit-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+            transform-origin :100% 100%;
+  }
+  #default-img:hover {
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+    -webkit-animation:'';
+    -moz-animation:none;
+    -ms-animation:'';
+    -o-animation:'';
+    animation:'';
+  }
   
-  body, html {
+  @keyframes pulsate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+  @-webkit-keyframes pulsate {
+    0% { -webkit-transform: scale(1); }
+    50% { -webkit-transform: scale(1.3); }
+    100% { -webkit-transform: scale(1); }
+  }
+  @-moz-keyframes pulsate {
+    0% { -moz-transform: scale(1); }
+    50% { -moz-transform: scale(1.3); }
+    100% { -moz-transform: scale(1); }  
+  }
+  @-ms-keyframes pulsate {
+    0% { -ms-transform: scale(1); }
+    50% { -ms-transform: scale(1.3); }
+    100% { -ms-transform: scale(1); }  
+  }
+  @-o-keyframes pulsate {
+    0% { -o-transform: scale(1); }
+    50% { -o-transform: scale(1.3); }
+    100% { -o-transform: scale(1); }  
+  }
+
+body, html {
     height: 100%;
     padding: 0;
     margin: 0;
@@ -70,6 +167,22 @@ header {
     transition: background-color .1s;
     cursor: pointer;
     border-radius: 5px;
+  }
+
+  button:hover {
+   background-color: #3486eb;
+  }
+
+ #edit-post-button {
+    margin: 20px;
+  }
+
+  #edit-post-button:hover {
+    background-color: #3486eb;
+  }
+
+  .edit-post-form {
+    padding: 30px;
   }
   
   .post-list {
@@ -123,73 +236,8 @@ header {
     padding: 2% 4%;
   }
   
-  .btn-no-style {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    text-decoration: none;
-    color: #225ca3;
-    font-size: 100%;
-    font-weight: bold;
-    transition: color .1s;
-    margin-left: 16px;
-  }
-  
-  .btn-no-style:hover {
-    background: none;
-    color: #3486eb;
-  }
-  
-  .delete-post-btn {
-    background-color: #d41414;
-  }
-  
-  .delete-post-btn:hover {
-    background-color: #ff643d;
-  }
-  
-  .post {
-    margin-bottom: 2%;
-    line-height: 150%;
-  }
-  
-  .post .title span {
-    font-style: italic;
-    font-size: 90%;
-    color: #7d7d7d;
-  }
-  
-  .edit-link {
-    display: block;
-    margin: -1.5% 0 2% 0;
-  }
-  
-  .comment-form {
-    margin-bottom: 5%;
-  }
-  
-  .comment {
-    padding: 1%;
-    margin-bottom: 1%;
-  }
-  
-  .comment:nth-child(odd) {
-    background-color: #fff5eb;
-  }
-  
-  .comment .meta {
-    font-size: 90%;
-    margin-bottom: .5%;
-    opacity: .6;
-  }
-  
-  .edit-post-form {
-    margin-bottom: 5%;
-  }
-  
-  footer {
-    border-top: 1px solid #ccc;
+  #footer {
+    border-top: 1px solid;
     display: flex;
     justify-content: center;
     padding: 1%;
@@ -199,9 +247,23 @@ header {
   .card {
       margin-bottom: 1em;
       margin-top: 1em;
+      transition: .5s ease;
+  }
+
+  .card:hover {
+    transition: .5s ease;
+    box-shadow: 0 0 0 2px #000000;
+  }
+
+  #createPost {
+    padding: 70px 50px 100px 50px;
   }
 
   .rows{
       display:flex;
       flex-direction: column;
+  }
+
+  .hidden {
+    display: none;
   }
