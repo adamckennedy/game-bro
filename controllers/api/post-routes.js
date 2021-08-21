@@ -40,7 +40,8 @@ router.get('/', (req, res) => {
    router.get('/:id', (req, res) => {
     Post.findOne({
       where: {
-        id: req.params.id
+        id: req.params.id,
+        loggedIn: req.session.loggedIn
       },
       attributes: ['id', 'title', 'user_id', 'post_content'],
       include: [
@@ -73,7 +74,8 @@ router.get('/', (req, res) => {
     Post.create({
       title: req.body.title,
       post_content: req.body.post_content,
-      user_id: req.session.user_id
+      user_id: req.session.user_id,
+      loggedIn: req.session.loggedIn
     })
       .then(dbPostData => res.json(dbPostData))
       .catch(err => {
@@ -82,16 +84,6 @@ router.get('/', (req, res) => {
       });
   });
 
-  // PUT /api/posts/upvote
-  // router.put('/upvote', (req, res) => {
-  //   Post.upvote(req.body, { Vote })
-  //     .then(updatedPostData => res.json(updatedPostData))
-  //     .catch(err => {
-  //       console.log(err);
-  //       res.status(400).json(err);
-  //     });
-  // });
-
   router.put('/:id', (req, res) => {
     Post.update({
         title: req.body.title,
@@ -99,7 +91,8 @@ router.get('/', (req, res) => {
       },
       {
         where: {
-          id: req.params.id
+          id: req.params.id,
+          loggedIn: req.session.loggedIn
         }
       })
       .then(dbPostData => {
@@ -118,7 +111,8 @@ router.get('/', (req, res) => {
   router.delete('/:id', (req, res) => {
     Post.destroy({
       where: {
-        id: req.params.id
+        id: req.params.id,
+        
       }
     })
       .then(dbPostData => {

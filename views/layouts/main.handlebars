@@ -16,75 +16,35 @@
 <div class="wrapper">
     <header>
         <h1 id="logo">gameMuffin</h1>
-        <nav class="navbar mt-2">
+        <nav class="navbar">
             {{#if loggedIn}}
-            <a href="/" class="navbar-item pt-1">home</a>
-            <a href="/dashboard" class="navbar-item is-hoverable pt-1">dashboard</a>
-            <a href="/dashboard/create/" class="navbar-item pt-1 mr-4">create post</a>
-            <button id="logout" class="navbar-item center-align hoverable">logout</button>
+            <a href="/" class="navbar-item is-hoverable">home</a>
+            <a href="/dashboard" class="navbar-item">dashboard</a>
+            <a href="/dashboard/create/" class="navbar-item">create post</a>
+            <button id="logout" class="navbar-item is-hoverable">logout</button>
             {{else}}
-            <a href="/" class="navbar-item is-hoverable pt-1">home</a>
-            <a href="/login" class="navbar-item enter-align hoverable" id="login-btn">login</a>
-            <a href="/signup" class="navbar-item center-align hoverable" id="login-btn">sign up</a>
+            <a href="/" class="navbar-item is-hoverable">home</a>
+            <a href="/login" class="navbar-item is-hoverable" id="login-btn">login</a>
+            <a href="/signup" class="navbar-item is-hoverable" id="login-btn">sign up</a>
             {{/if}}
         </nav>
 
     </header>
 
-    <!--
- {{#if loggedIn}}
-{{else}}
-
-     <main id="container" class="center-align">
-
-         Game content goes here
-        <div id="gameDiv" class="gameDiv center-align card-panel hoverable">
-
-          
-            <div id="displayGame">
-                <img id="defaultImg" src="/stylesheets/default-img.png" alt="">
-                <img id="errorImg" class="hidden" src="stylesheets/error-img.jpg" alt="">
-            </div>
-
-            <div id="infoDiv">
-                <h1>Game<span class="appName"> Muffin</span></h1>
-                <p class="description">
-                    Browse, add, rate, and check the latest deals on our favorite games!
-                </p>
-
-            </div>
-
-    </main>
-   
-      {{/if}}--> 
     <main>
         {{{ body }}}
     </main>
-    
+
+
+    <footer class="footer rows pb-2">
+        <div class="row-is-full content has-text-centered">
+            <p>
+                by Stefan, Adam, Winter, and Alison
+            </p>
+        </div>
+    </footer>
 
     {{#if loggedIn}}
     <script src="/javascript/logout.js"></script>
     {{/if}}
-    
-
-    {{#if loggedIn}}
-    <footer class="footer rows pb-2">
-        <div class="row-is-full content has-text-centered">
-            <p>
-                <a href="/">homepage</a>{{#if loggedIn}} |
-                <a href="/dashboard/">dashboard</a> |
-                <a href="/dashboard/create">create review</a> |
-                <a href="/dashboard/edit">edit review</a>
-                {{else}}
-                | <a href="/login/">login</a>
-                {{/if}}
-            </p>
-        </div>
-    </footer>
-    {{/if}}
-
-    
-
-
     </body>
-

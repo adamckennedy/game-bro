@@ -54,9 +54,36 @@ router.get('/', (req, res) => {
     res.render('signup');
   });
 
+  // router.get('/dashboard', (req, res) => {
+    
+  //   res.render('dashboard'); 
+  // });
+
   router.get('/dashboard', (req, res) => {
-    res.render('dashboard'); 
-  });
+    console.log(req.session);
+      Post.findAll({
+  
+   
+        include: [
+          {
+            model: User,
+            attributes: { exclude: 'password' }
+          }
+        ]
+      })
+        .then(dbPostData => {
+          // pass a single post object into the homepage template
+          const posts = dbPostData.map(post => post.get({ plain: true }));
+          res.render('dashboard', {
+              posts,
+              loggedIn: req.session.loggedIn
+          });
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+    });
 
   router.get('/post/:id', (req, res) => {
     Post.findOne({
