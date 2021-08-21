@@ -14,7 +14,7 @@ router.get('/', withAuth, (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['username']
+          attributes: ['username', 'twitch']
         }
       ]
     })
@@ -39,7 +39,7 @@ router.get('/', withAuth, (req, res) => {
       include: [
         {
           model: User,
-          attributes: ['username']
+          attributes: ['username', 'twitch']
         }
       ]
     })

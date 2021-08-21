@@ -21,35 +21,8 @@
     <div class="card-content">
         <b>Posted by </b>
             <a>{{user.username}}</a>
-            {{!-- on {{format_date}} --}}
+            | <a href="https://twitch.com/{{user.twitch}}"><i>{{user.twitch}}</i></a> 
     </div>
 
-
-    {{!-- {{#each posts as |post|}} 
-    \{{post.post_content}}
-    {{user.username}}
-    {{/each}} --}}
-   
-
-    <!-- Add if statement to only allow a user to edit this ONLY for their 
-    Comments, no other comments that aren't associated with their account
-    If they click edit, we need a check on the backend to make sure they're 
-    the same person - make sure it's the right user. 
-    
-    Use req.session.user_id - check to see if the user is a match for
-    the session ID -->
-
-  <!--    <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>-->
-  
-          
-        
-
-       
-          <!--      <b>{{user.username}}</b> 
-               | <a href="https://twitter.com/{{user.twitter}}"><i class="fab fa-twitter"></i></a> 
-                <a href="https://github.com/{{user.github}}"><i class="fab fa-github"></i></a>
-                 | {{'format_date created_at'}} | <a href="/post/{{id}}">{{post.post_content}} </a>
-            </div>-->
-        
     </div>
 

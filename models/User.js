@@ -30,6 +30,10 @@ User.init(
                  isEmail: true
              }
          },
+         twitch: {
+            type: DataTypes.STRING,
+            allowNull: true
+         },
          password: {
              type: DataTypes.STRING,
              allowNull: false,
