@@ -1,30 +1,19 @@
 <div class="mb-5 pt-3">
-    <p><a href="/dashboard/create/">
-    <button id="create-post" class="button is-primary">New Review</button></a></p>  
-        <h2 class="title pb-4">My Dashboard: My Game Reviews</h2><hr>
+  {{#if posts.length}}
+  <h4 class="title">My Game Reviews</h4>
 
-
-{{#if posts.length}}
-
-  
-     <ol>
+  <ul>
     {{#each posts as |post|}}
-  
-    <li>
+
+    <li class="card-content">
       {{> post-info post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit Review</a>
+      <a href="/dashboard/edit/{{post.id}}" id="edit-post-button" class="button">Edit Review</a>
     </li>
     {{/each}}
-  </ol>
- 
- 
-  
-{{else}}
-<h6 class="pb-4 has-text-centered is-italic">you do not currently have any games</h6>
+  </ul>
 
-{{/if}}
+  {{else}}
+  <p class="pb-4 has-text-centered is-italic">You do not currently have any reviews.</p>
+  {{/if}}
 
-
-
-<script src="/javascript/create-post.js"></script>
-
+  <script src="/javascript/create-post.js"></script>

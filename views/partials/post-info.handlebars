@@ -1,9 +1,9 @@
 <div class="card">
   <header class="card-header card-header-title">
     
-        <div class="column">
+        <div class="">
             <p class=""></p>
-      <a href="/post/{{id}}"  class="">{{title}}</a>
+      <a href="/post/{{id}}"  class="is-italic">{{title}}</a>
      
       </div>
       <div class="column">
@@ -21,14 +21,15 @@
     <div class="card-content">
         <b>Posted by </b>
             <a>{{user.username}}</a>
+            {{!-- on {{format_date}} --}}
     </div>
 
 
     {{!-- {{#each posts as |post|}} 
     \{{post.post_content}}
     {{user.username}}
-    {{/each}}
-    --}}
+    {{/each}} --}}
+   
 
     <!-- Add if statement to only allow a user to edit this ONLY for their 
     Comments, no other comments that aren't associated with their account
