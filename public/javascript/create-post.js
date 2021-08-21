@@ -17,7 +17,6 @@ async function newPostHandler(event) {
     });
 
     if (response.ok) {
-      //  document.location.replace('/dashboard');
       document.location.replace('/dashboard');
     }
         else {
@@ -26,4 +25,3 @@ async function newPostHandler(event) {
     }
 
     document.querySelector('#create-new-post-btn').addEventListener('click', newPostHandler);
-    //document.querySelector('.new-post-form').addEventListener('submit', newPostHandler);

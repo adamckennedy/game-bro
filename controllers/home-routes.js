@@ -5,20 +5,9 @@ const { Post, User, Comment } = require('../models');
 
 router.get('/', (req, res) => {
   console.log(req.session);
-    Post.findAll({
-
-      //  [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
-    
-      
+    Post.findAll({      
       include: [
-      //   {
-      //     model: Comment,
-      //     attributes: ['id', 'user_id', 'post_id', 'comment_text'],
-      //     include: {
-      //       model: User,
-      //       attributes: ['username']
-      //     }
-      //   },
+
         {
           model: User,
           attributes: { exclude: 'password' }
@@ -46,15 +35,10 @@ router.get('/', (req, res) => {
     }
       res.render('login')
     });
-  // router.get('/login', (req, res) => {
-  //   res.render('login');
-  // });
 
   router.get('/signup', (req, res) => {
     res.render('signup');
   });
-
-
 
   router.get('/dashboard', (req, res) => {
     console.log(req.session);
@@ -80,8 +64,6 @@ router.get('/', (req, res) => {
         });
     });
 
-  
-
 
   router.get('/post/:id', (req, res) => {
     Post.findOne({
@@ -98,10 +80,6 @@ router.get('/', (req, res) => {
             attributes: ['username']
           }
         },
-        // {
-        // model: Vote,
-        // attributes: ['id', 'vote']
-        // },
         {
         model: User,
         attributes: ['username']
@@ -115,7 +93,6 @@ router.get('/', (req, res) => {
         });
         return;
       } 
-      //const post = dbPostData.get({ plain: true});
       const posts = dbPostData.map(post => post.get({ plain: true }));
       console.log(post);
 
@@ -130,11 +107,6 @@ router.get('/', (req, res) => {
       console.log(err);
       res.status(500).json(err);
     });
-
-
- 
-
-
   });
 
 

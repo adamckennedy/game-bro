@@ -7,7 +7,6 @@ const withAuth = require('../../utils/auth');
 // get all 
 router.get('/', (req, res) => {
    Post.findAll({
-   // order: [['created_at', 'DESC']],
     attributes: [
       'id',
       'title',
@@ -15,18 +14,18 @@ router.get('/', (req, res) => {
       'post_content'
     ],
     include: [
-      // include the Comment model here:
+      // include the Comment model here if we add it in the future:
       {
         model: Comment,
       //  as: 'comments',
         attributes: ['id', 'user_id', 'post_id'],
         include: {
           model: User,
-          attributes: ['id', 'username', 'email']
+          attributes: ['id', 'username', 'email', 'twitch']
         },
         },      {
         model: User,
-        attributes: ['id', 'username', 'email']
+        attributes: ['id', 'username', 'email', 'twitch']
       }
     ],
    })
@@ -52,7 +51,7 @@ router.get('/', (req, res) => {
         },
         {
           model: User,
-          attributes: ['id', 'username', 'email'],
+          attributes: ['id', 'username', 'email', 'twitch'],
         },
       ],
     })
@@ -84,15 +83,6 @@ router.get('/', (req, res) => {
       });
   });
 
-  // PUT /api/posts/upvote
-  // router.put('/upvote', (req, res) => {
-  //   Post.upvote(req.body, { Vote })
-  //     .then(updatedPostData => res.json(updatedPostData))
-  //     .catch(err => {
-  //       console.log(err);
-  //       res.status(400).json(err);
-  //     });
-  // });
 
   router.put('/:id', (req, res) => {
     Post.update({
@@ -102,7 +92,7 @@ router.get('/', (req, res) => {
       {
         where: {
           id: req.params.id,
-   //       loggedIn: req.session.loggedIn
+       //   loggedIn: req.session.loggedIn
         }
       })
       .then(dbPostData => {
@@ -122,7 +112,7 @@ router.get('/', (req, res) => {
     Post.destroy({
       where: {
         id: req.params.id,
-        loggedIn: req.session.loggedIn
+       //   loggedIn: req.session.loggedIn
       }
     })
       .then(dbPostData => {

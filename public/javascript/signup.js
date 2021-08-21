@@ -3,6 +3,7 @@ async function signupFormHandler(event) {
 
   const username = document.querySelector('#username-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
+  const twitch = document.querySelector('#twitch-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
   if (username && email && password) {
@@ -11,6 +12,7 @@ async function signupFormHandler(event) {
       body: JSON.stringify({
         username,
         email,
+        twitch,
         password
       }),
       headers: { 'Content-Type': 'application/json' }
