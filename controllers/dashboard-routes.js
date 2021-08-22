@@ -33,6 +33,7 @@ router.get('/', withAuth, (req, res) => {
   router.get('/edit/:id', withAuth, (req, res) => {
     Post.findOne({
       where: {
+        user_id: req.session.user_id,
         id: req.params.id,
       },
       attributes: ['id', 'title', 'user_id', 'post_content'],
@@ -45,7 +46,7 @@ router.get('/', withAuth, (req, res) => {
     })
       .then(dbPostData => {
         if (!dbPostData) {
-          res.status(404).json({ message: 'No post found with this id' });
+          res.status(404).json({ message: 'Oops, this is not your review! You are only authorized to edit your own!' });
           return;
         }
   
