@@ -92,7 +92,7 @@ router.get('/', (req, res) => {
       {
         where: {
           id: req.params.id,
-       //   loggedIn: req.session.loggedIn
+      //    loggedIn: req.session.loggedIn
         }
       })
       .then(dbPostData => {
@@ -112,7 +112,7 @@ router.get('/', (req, res) => {
     Post.destroy({
       where: {
         id: req.params.id,
-       //   loggedIn: req.session.loggedIn
+     //  loggedIn: req.session.loggedIn
       }
     })
       .then(dbPostData => {
